@@ -556,5 +556,5 @@ if __name__ == "__main__":
     # Example usage
     generate_schedule_html(
         dest_path="./extracted_schedules/",
-        output_file="./html/sam_schedule.html"
+        output_file="./docs/sam_schedule.html"
     )
