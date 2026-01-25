@@ -327,7 +327,42 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
             color: #6c757d;
             font-size: 16px;
         }}
-        
+
+        .easter-egg {{
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #ccc;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s;
+        }}
+
+        .easter-egg:hover {{
+            color: #999;
+        }}
+
+        .glitter-particle {{
+            position: fixed;
+            pointer-events: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: glitter-fall linear forwards;
+            z-index: 9999;
+        }}
+
+        @keyframes glitter-fall {{
+            0% {{
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }}
+            100% {{
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg) scale(0.5);
+            }}
+        }}
+
         @media (max-width: 768px) {{
             .locations-container {{
                 grid-template-columns: 1fr;
@@ -370,6 +405,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         <div class="locations-container" id="scheduleContainer">
             <!-- Schedule will be populated by JavaScript -->
         </div>
+        <div class="easter-egg" onclick="triggerGlitterBomb()">glitter bomb</div>
     </div>
 
     <script>
@@ -538,6 +574,64 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         function nextWeek() {{
             currentWeekStart.setDate(currentWeekStart.getDate() + 7);
             renderSchedule();
+        }}
+
+        function triggerGlitterBomb() {{
+            const colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6ff3', '#c9b1ff', '#00d4ff', '#ff9f43'];
+            const particleCount = 1500;
+
+            for (let i = 0; i < particleCount; i++) {{
+                setTimeout(() => {{
+                    const particle = document.createElement('div');
+                    particle.className = 'glitter-particle';
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.top = '-10px';
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.width = (Math.random() * 8 + 4) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                    document.body.appendChild(particle);
+
+                    setTimeout(() => particle.remove(), 3500);
+                }}, Math.random() * 500);
+            }}
+        }}
+        function triggerGlitterBomb() {{
+            // More vibrant, cohesive color palette with metallic/shimmery vibes
+            const colors = [
+                '#FFD700', // Gold
+                '#FF1493', // Deep Pink
+                '#00CED1', // Turquoise
+                '#FF69B4', // Hot Pink
+                '#9370DB', // Medium Purple
+                '#FF6347', // Tomato Red
+                '#00FA9A', // Medium Spring Green
+                '#FFA500', // Orange
+                '#FF00FF', // Magenta
+                '#00FFFF'  // Cyan
+            ];
+            const particleCount = 1500;
+
+            for (let i = 0; i < particleCount; i++) {{
+                setTimeout(() => {{
+                    const particle = document.createElement('div');
+                    particle.className = 'glitter-particle';
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.top = '-10px';
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.width = (Math.random() * 8 + 4) + 'px';
+                    particle.style.height = particle.style.width;
+                    particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    
+                    // Add sparkle effect!
+                    particle.style.boxShadow = `0 0 ${{Math.random() * 10 + 5}}px ${{colors[Math.floor(Math.random() * colors.length)]}}`;
+                    
+                    document.body.appendChild(particle);
+
+                    // Particles stay longer (6000ms instead of 3500ms)
+                    setTimeout(() => particle.remove(), 6000);
+                }}, Math.random() * 500);
+            }}
         }}
         
         // Initial render
