@@ -1,0 +1,6 @@
+outputs/
+old/
+__pycache__/
+pdfs/
+*.pdf
+extracted_schedules/
