@@ -383,6 +383,12 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
                 order: -1;
             }}
         }}
+        @keyframes float-up {{
+            to {{
+                transform: translateY(-120vh);
+                opacity: 0;
+            }}
+        }}
     </style>
 </head>
 <body>
@@ -405,7 +411,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         <div class="locations-container" id="scheduleContainer">
             <!-- Schedule will be populated by JavaScript -->
         </div>
-        <div class="easter-egg" onclick="triggerGlitterBomb()">glitter bomb</div>
+        <div class="easter-egg" onclick="triggerGlitterBomb()">secret to happiness</div>
     </div>
 
     <script>
@@ -577,41 +583,13 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         }}
 
         function triggerGlitterBomb() {{
-            const colors = ['#ff6b6b', '#ffd93d', '#6bcb77', '#4d96ff', '#ff6ff3', '#c9b1ff', '#00d4ff', '#ff9f43'];
-            const particleCount = 1500;
-
-            for (let i = 0; i < particleCount; i++) {{
-                setTimeout(() => {{
-                    const particle = document.createElement('div');
-                    particle.className = 'glitter-particle';
-                    particle.style.left = Math.random() * 100 + 'vw';
-                    particle.style.top = '-10px';
-                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.width = (Math.random() * 8 + 4) + 'px';
-                    particle.style.height = particle.style.width;
-                    particle.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-                    document.body.appendChild(particle);
-
-                    setTimeout(() => particle.remove(), 3500);
-                }}, Math.random() * 500);
-            }}
-        }}
-        function triggerGlitterBomb() {{
-            // More vibrant, cohesive color palette with metallic/shimmery vibes
             const colors = [
-                '#FFD700', // Gold
-                '#FF1493', // Deep Pink
-                '#00CED1', // Turquoise
-                '#FF69B4', // Hot Pink
-                '#9370DB', // Medium Purple
-                '#FF6347', // Tomato Red
-                '#00FA9A', // Medium Spring Green
-                '#FFA500', // Orange
-                '#FF00FF', // Magenta
-                '#00FFFF'  // Cyan
+                '#FFD700', '#FF1493', '#00CED1', '#FF69B4', '#9370DB', 
+                '#FF6347', '#00FA9A', '#FFA500', '#FF00FF', '#00FFFF'
             ];
-            const particleCount = 1500;
+            const particleCount = 1000;
 
+            // Glitter particles falling
             for (let i = 0; i < particleCount; i++) {{
                 setTimeout(() => {{
                     const particle = document.createElement('div');
@@ -619,18 +597,34 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
                     particle.style.left = Math.random() * 100 + 'vw';
                     particle.style.top = '-10px';
                     particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.width = (Math.random() * 8 + 4) + 'px';
+                    particle.style.width = (Math.random() * 15 + 4) + 'px';
                     particle.style.height = particle.style.width;
                     particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    
-                    // Add sparkle effect!
                     particle.style.boxShadow = `0 0 ${{Math.random() * 10 + 5}}px ${{colors[Math.floor(Math.random() * colors.length)]}}`;
-                    
                     document.body.appendChild(particle);
-
-                    // Particles stay longer (6000ms instead of 3500ms)
                     setTimeout(() => particle.remove(), 6000);
                 }}, Math.random() * 500);
+            }}
+            // Balloons rising from bottom
+            for (let i = 0; i < 150; i++) {{
+                setTimeout(() => {{
+                    const balloon = document.createElement('div');
+                    const drift = Math.random() * 60 - 30; // Random horizontal drift
+                    balloon.style.position = 'fixed';
+                    balloon.style.left = Math.random() * 90 + 5 + 'vw';
+                    balloon.style.bottom = '-80px';
+                    balloon.style.width = (Math.random() * 40 + 50) + 'px';
+                    balloon.style.height = (Math.random() * 50 + 60) + 'px';
+                    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    balloon.style.borderRadius = '50% 50% 45% 45%';
+                    balloon.style.opacity = '0.85';
+                    balloon.style.boxShadow = `inset -10px -10px 20px rgba(0,0,0,0.2), 0 0 20px ${{colors[Math.floor(Math.random() * colors.length)]}}`;
+                    balloon.style.animation = `float-up ${{Math.random() * 3 + 4}}s ease-out forwards`;
+                    balloon.style.transform = `translateX(${{drift}}px)`; // Add horizontal drift
+                    balloon.style.zIndex = '9999';
+                    document.body.appendChild(balloon);
+                    setTimeout(() => balloon.remove(), 8000);
+                }}, Math.random() * 1000);
             }}
         }}
         
