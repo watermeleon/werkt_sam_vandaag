@@ -93,7 +93,7 @@ def prepare_schedule_data(df: pd.DataFrame) -> List[Dict]:
             'date': row['Date'].strftime('%Y-%m-%d'),
             'day_of_week': row['Date'].strftime('%A'),
             'employee': row.get('Employee', 'Sam'),
-            'role': str(row.get('Role', '')),
+            # 'role': str(row.get('Role', '')),
             'location': row.get('Location', 'Unknown'),
             'shift': shift_value
         }
@@ -121,7 +121,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam's Work Schedule</title>
+    <title>Werkt Sam Vandaag?</title>
     <style>
         * {{
             margin: 0;
@@ -353,7 +353,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
 <body>
     <div class="container">
         <div class="header">
-            <h1>📅 Sam's Work Schedule</h1>
+            <h1>📅 Werkt Sam Vandaag?</h1>
             <p>Weekly Overview - Both Locations</p>
         </div>
         
@@ -498,9 +498,6 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
                                 </div>
                                 <div class="shift-info">
                                     <div class="shift-time">${{getShiftDisplay(shift.shift)}}</div>
-                                    <div class="shift-details">
-                                        ${{shift.role ? shift.role : ''}}
-                                    </div>
                                 </div>
                             </div>
                         `;
