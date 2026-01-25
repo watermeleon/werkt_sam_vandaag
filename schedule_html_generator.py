@@ -148,24 +148,24 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         .header {{
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 30px;
+            padding: 15px;
             text-align: center;
         }}
-        
+
         .header h1 {{
-            font-size: 32px;
-            margin-bottom: 10px;
+            font-size: 28px;
+            margin-bottom: 5px;
         }}
         
         .week-navigator {{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 30px;
+            padding: 10px 20px;
             background: #f8f9fa;
             border-bottom: 2px solid #e9ecef;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }}
         
         .week-info {{
@@ -206,29 +206,29 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         .locations-container {{
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
+            gap: 20px;
+            padding: 15px;
         }}
-        
+
         .location-section {{
             background: #f8f9fa;
             border-radius: 8px;
-            padding: 20px;
+            padding: 12px;
         }}
-        
+
         .location-title {{
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: #667eea;
             text-align: center;
         }}
         
         .day-card {{
             background: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
             border-left: 4px solid #667eea;
         }}
         
@@ -263,29 +263,29 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }}
-        
+
         .day-name {{
             font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
             color: #495057;
         }}
-        
+
         .day-date {{
-            font-size: 14px;
+            font-size: 13px;
             color: #6c757d;
         }}
-        
+
         .shift-info {{
-            margin-top: 8px;
+            margin-top: 2px;
         }}
-        
+
         .shift-time {{
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 600;
             color: #212529;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }}
         
         .shift-details {{
