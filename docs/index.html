@@ -10,220 +10,404 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        /* ===== Base: Medical Dashboard (dark, default) ===== */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #f5f5f5;
+            background: #1b2332;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             padding: 20px;
-            color: #333;
+            color: #dce4ee;
+            transition: background 0.3s, color 0.3s;
         }
-        
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: #232d3f;
+            border: 1px solid #3a4556;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
             overflow: hidden;
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
-        
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a4a7a 0%, #2a2a4e 100%);
+            border-bottom: 2px solid #00ff41;
             color: white;
-            padding: 15px;
+            padding: 18px;
             text-align: center;
+            position: relative;
+            transition: background 0.3s, border-color 0.3s;
         }
-
         .header h1 {
+            font-family: 'Courier New', monospace;
             font-size: 28px;
             margin-bottom: 5px;
+            letter-spacing: 2px;
         }
-        
+        .header p {
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
         .week-navigator {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
+            background: #1e2838;
+            border-bottom: 1px solid #3a4556;
             flex-wrap: wrap;
             gap: 10px;
+            transition: background 0.3s, border-color 0.3s;
         }
-        
         .week-info {
             font-size: 18px;
             font-weight: 600;
-            color: #495057;
+            color: #dce4ee;
+            font-family: 'Courier New', monospace;
             flex: 1;
             text-align: center;
             min-width: 250px;
+            transition: color 0.3s;
         }
-        
         .nav-buttons {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
         .btn {
             padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            background: #667eea;
-            color: white;
+            border: 1px solid #3a4556;
+            border-radius: 4px;
+            background: #2a3548;
+            color: #dce4ee;
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
-        
         .btn:hover {
-            background: #5568d3;
+            background: #354460;
+            border-color: #00ff41;
+            color: #00ff41;
         }
-        
         .btn:active {
             transform: scale(0.98);
         }
-        
+        .btn-secondary {
+            background: #2a3548;
+            border-color: #3a4556;
+        }
+        .btn-secondary:hover {
+            background: #354460;
+        }
+        .btn-success {
+            background: rgba(0,255,65,0.12);
+            border-color: #00ff41;
+            color: #00ff41;
+        }
+        .btn-success:hover {
+            background: rgba(0,255,65,0.22);
+        }
         .locations-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             padding: 15px;
         }
-
         .location-section {
-            background: #f8f9fa;
-            border-radius: 8px;
+            background: #1b2332;
+            border: 1px solid #3a4556;
+            border-radius: 6px;
             padding: 12px;
+            transition: background 0.3s, border-color 0.3s;
         }
-
         .location-title {
-            font-size: 20px;
+            font-size: 16px;
             font-weight: 700;
             margin-bottom: 10px;
-            color: #667eea;
+            color: #6cb4ff;
             text-align: center;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 21px;
+            border-bottom: 1px solid #2a3548;
+            padding-bottom: 8px;
+            transition: color 0.3s;
         }
-        
         .day-card {
-            background: white;
-            border-radius: 6px;
+            background: linear-gradient(135deg, #263040 0%, #2a3750 100%);
+            border-radius: 4px;
             padding: 8px 12px;
             margin-bottom: 6px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #3d8ecf;
+            transition: all 0.2s;
         }
-        
+        .day-card:hover {
+            border-left-color: #5bb8ff;
+            background: linear-gradient(135deg, #2a364a 0%, #2f3e58 100%);
+        }
         .day-card.no-shift {
-            opacity: 0.5;
-            border-left-color: #dee2e6;
+            opacity: 0.55;
+            border-left-color: #3a4556;
+            background: #232d3f;
         }
-        
         .day-card.current-day {
-            border-left-width: 6px;
-            border-left-color: #28a745;
-            background: #f0fff4;
-            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+            border-left: 5px solid #00ff41;
+            background: linear-gradient(135deg, #1a3a2a 0%, #1e4032 100%);
+            box-shadow: 0 0 18px rgba(0,255,65,0.15), inset 0 0 30px rgba(0,255,65,0.04);
         }
-        
+        .day-card.current-day:hover {
+            background: linear-gradient(135deg, #1e4030 0%, #224838 100%);
+        }
         .day-card.current-day .day-name {
-            color: #28a745;
+            color: #44ff77;
         }
-        
+        .day-card.current-day .shift-time {
+            color: #a0f0b8;
+        }
+        .day-card.current-day .no-shift-message {
+            color: #70c090;
+        }
+        .day-card.current-day .day-date {
+            color: #80d0a0;
+        }
         .current-day-badge {
             display: inline-block;
-            background: #28a745;
-            color: white;
+            background: #00ff41;
+            color: #0d1117;
             padding: 2px 8px;
             border-radius: 4px;
             font-size: 11px;
             font-weight: 600;
             margin-left: 8px;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s;
         }
-        
         .day-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 4px;
         }
-
         .day-name {
             font-weight: 700;
-            font-size: 14px;
-            color: #495057;
+            font-size: 15px;
+            color: #e4eaf2;
+            transition: color 0.3s;
         }
-
         .day-date {
             font-size: 13px;
-            color: #6c757d;
+            color: #cdd5e0;
+            font-family: 'Courier New', monospace;
+            transition: color 0.3s;
         }
-
         .shift-info {
             margin-top: 2px;
         }
-
         .shift-time {
-            font-size: 15px;
-            font-weight: 600;
-            color: #212529;
-            margin-bottom: 2px;
-        }
-        
-        .shift-details {
-            font-size: 14px;
-            color: #6c757d;
-        }
-        
-        .shift-description {
             font-size: 13px;
-            color: #495057;
-            margin-top: 4px;
-            font-style: italic;
+            font-weight: 600;
+            color: #d0d8e4;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+            transition: color 0.3s;
         }
-        
-        .btn-secondary {
-            background: #6c757d;
-        }
-        
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-        
-        .btn-success {
-            background: #28a745;
-        }
-        
-        .btn-success:hover {
-            background: #218838;
-        }
-        
         .no-shift-message {
-            color: #6c757d;
+            color: #7888a0;
             font-style: italic;
+            font-family: 'Courier New', monospace;
+            transition: color 0.3s;
         }
-        
         .empty-week {
             text-align: center;
             padding: 40px;
-            color: #6c757d;
+            color: #7888a0;
             font-size: 16px;
+            transition: color 0.3s;
         }
-
         .easter-egg {
             text-align: center;
             padding: 15px;
             font-size: 12px;
-            color: #ccc;
+            color: #3a6a4a;
             cursor: pointer;
             user-select: none;
             transition: color 0.3s;
         }
-
         .easter-egg:hover {
+            color: #50e070;
+        }
+
+        /* ===== Theme Toggle Button ===== */
+        .theme-toggle {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            cursor: pointer;
+            font-size: 20px;
+            line-height: 38px;
+            text-align: center;
+            transition: all 0.3s;
+            padding: 0;
+            color: white;
+        }
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* ===== Light Mode Overrides ===== */
+        body.theme-light {
+            background: #f5f5f5;
+            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .theme-light .container {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .theme-light .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-bottom: none;
+        }
+        .theme-light .header h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            letter-spacing: normal;
+        }
+        .theme-light .header p {
+            color: rgba(255,255,255,0.9);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: inherit;
+            letter-spacing: normal;
+        }
+        .theme-light .week-navigator {
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .theme-light .week-info {
+            color: #495057;
+            font-family: inherit;
+        }
+        .theme-light .btn {
+            background: #667eea;
+            border: none;
+            border-radius: 6px;
+            color: white;
+        }
+        .theme-light .btn:hover {
+            background: #5568d3;
+            color: white;
+        }
+        .theme-light .btn-secondary {
+            background: #6c757d;
+        }
+        .theme-light .btn-secondary:hover {
+            background: #5a6268;
+        }
+        .theme-light .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        .theme-light .btn-success:hover {
+            background: #218838;
+            color: white;
+        }
+        .theme-light .location-section {
+            background: #f8f9fa;
+            border: none;
+        }
+        .theme-light .location-title {
+            color: #667eea;
+            font-family: inherit;
+            font-size: 20px;
+            letter-spacing: normal;
+            text-transform: none;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .theme-light .day-card {
+            background: white;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+        }
+        .theme-light .day-card:hover {
+            background: white;
+            border-left-color: #667eea;
+        }
+        .theme-light .day-card.no-shift {
+            opacity: 0.5;
+            border-left-color: #dee2e6;
+            background: white;
+        }
+        .theme-light .day-card.current-day {
+            border-left: 6px solid #28a745;
+            background: #f0fff4;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+        }
+        .theme-light .day-card.current-day:hover {
+            background: #f0fff4;
+        }
+        .theme-light .day-card.current-day .day-name {
+            color: #28a745;
+        }
+        .theme-light .day-card.current-day .shift-time {
+            color: #212529;
+        }
+        .theme-light .day-card.current-day .no-shift-message {
+            color: #6c757d;
+        }
+        .theme-light .day-card.current-day .day-date {
+            color: #6c757d;
+        }
+        .theme-light .current-day-badge {
+            background: #28a745;
+            color: white;
+            font-family: inherit;
+            letter-spacing: normal;
+        }
+        .theme-light .day-name {
+            color: #495057;
+            font-size: 14px;
+        }
+        .theme-light .day-date {
+            color: #6c757d;
+            font-family: inherit;
+        }
+        .theme-light .shift-time {
+            font-size: 15px;
+            color: #212529;
+            font-family: inherit;
+            letter-spacing: normal;
+        }
+        .theme-light .no-shift-message {
+            color: #6c757d;
+            font-family: inherit;
+        }
+        .theme-light .empty-week {
+            color: #6c757d;
+        }
+        .theme-light .easter-egg {
+            color: #ccc;
+        }
+        .theme-light .easter-egg:hover {
             color: #999;
         }
 
+        /* ===== Animations & Misc ===== */
         .glitter-particle {
             position: fixed;
             pointer-events: none;
@@ -233,7 +417,6 @@
             animation: glitter-fall linear forwards;
             z-index: 9999;
         }
-
         @keyframes glitter-fall {
             0% {
                 opacity: 1;
@@ -244,31 +427,28 @@
                 transform: translateY(100vh) rotate(720deg) scale(0.5);
             }
         }
+        @keyframes float-up {
+            to {
+                transform: translateY(-120vh);
+                opacity: 0;
+            }
+        }
 
         @media (max-width: 768px) {
             .locations-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
             .week-navigator {
                 flex-direction: column;
                 gap: 15px;
             }
-            
             .nav-buttons {
                 width: 100%;
                 justify-content: center;
             }
-            
             .week-info {
                 order: -1;
-            }
-        }
-        @keyframes float-up {
-            to {
-                transform: translateY(-120vh);
-                opacity: 0;
             }
         }
     </style>
@@ -278,15 +458,16 @@
         <div class="header">
             <h1>📅 Werkt Sam Vandaag?</h1>
             <p>Weekly Overview - Both Locations</p>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="Toggle light/dark mode">☀️</button>
         </div>
         
         <div class="week-navigator">
             <button class="btn btn-secondary" onclick="toggleShiftInfo()" id="shiftInfoBtn">Hide Shift Info ℹ️</button>
             <div class="week-info" id="weekInfo">Loading...</div>
             <div class="nav-buttons">
-                <button class="btn" onclick="previousWeek()">← Previous Week</button>
+                <button class="btn" onclick="previousWeek()">← Previous</button>
                 <button class="btn btn-success" onclick="goToCurrentWeek()">Current Week</button>
-                <button class="btn" onclick="nextWeek()">Next Week →</button>
+                <button class="btn" onclick="nextWeek()">Next →</button>
             </div>
         </div>
         
@@ -1373,8 +1554,9 @@
                     
                     if (shift) {
                         hasAnyShifts = true;
+                        const shiftClass = 'shift-' + shift.shift.charAt(0);
                         html += `
-                            <div class="day-card${today ? ' current-day' : ''}">
+                            <div class="day-card ${shiftClass}${today ? ' current-day' : ''}">
                                 <div class="day-header">
                                     <div class="day-name">
                                         ${dayName}
@@ -1472,6 +1654,13 @@
             }
         }
         
+        let isDarkMode = true;
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('theme-light', !isDarkMode);
+            document.getElementById('themeToggle').textContent = isDarkMode ? '☀️' : '🌙';
+        }
+
         // Initial render
         renderSchedule();
     </script>
