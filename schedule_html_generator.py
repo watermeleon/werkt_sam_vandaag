@@ -165,7 +165,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         .header p {{
             color: #00ff41;
             font-family: 'Courier New', monospace;
-            font-size: 13px;
+            font-size: 15px;
             letter-spacing: 1px;
             transition: color 0.3s;
         }}
@@ -332,6 +332,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
             font-weight: 600;
             color: #d0d8e4;
             font-family: 'Courier New', monospace;
+            font-size: 14px;
             letter-spacing: 0.5px;
             margin-bottom: 2px;
             transition: color 0.3s;
@@ -553,6 +554,11 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         }}
 
         @media (max-width: 768px) {{
+            .header h1 {{
+                font-size: 22px;
+                letter-spacing: 0.5px;
+                padding-right: 40px;
+            }}
             .locations-container {{
                 grid-template-columns: 1fr;
                 gap: 20px;
