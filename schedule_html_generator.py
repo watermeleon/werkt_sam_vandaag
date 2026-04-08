@@ -399,11 +399,11 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         </div>
         
         <div class="week-navigator">
-            <button class="btn" onclick="previousWeek()">← Previous Week</button>
+            <button class="btn btn-secondary" onclick="toggleShiftInfo()" id="shiftInfoBtn">Hide Shift Info ℹ️</button>
             <div class="week-info" id="weekInfo">Loading...</div>
             <div class="nav-buttons">
+                <button class="btn" onclick="previousWeek()">← Previous Week</button>
                 <button class="btn btn-success" onclick="goToCurrentWeek()">Current Week</button>
-                <button class="btn btn-secondary" onclick="toggleShiftInfo()" id="shiftInfoBtn">Show Shift Info</button>
                 <button class="btn" onclick="nextWeek()">Next Week →</button>
             </div>
         </div>
@@ -418,11 +418,11 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         // Embedded schedule data
         const scheduleData = {schedule_json};
         
-        // Current week start date (Monday)
-        let currentWeekStart = new Date('{initial_date}');
-        
+        // Current week start date (Monday) - always computed from today's date
+        let currentWeekStart = getMonday(new Date());
+
         // Shift info toggle
-        let showShiftInfo = false;
+        let showShiftInfo = true;
         
         // Shift descriptions mapping
         const shiftDescriptions = {{
@@ -432,7 +432,6 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
             'd': 'Dagdienst',
             'A': 'Avonddienst',
             'a': 'Avonddienst',
-            '-': 'Free?',
             'x': 'Vrijgevraagd',
             'X': 'Vrijgevraagd'
         }};
@@ -464,7 +463,10 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         }}
         
         function getDateString(date) {{
-            return date.toISOString().split('T')[0];
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${{year}}-${{month}}-${{day}}`;
         }}
         
         function isToday(date) {{
@@ -484,7 +486,7 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         function toggleShiftInfo() {{
             showShiftInfo = !showShiftInfo;
             const btn = document.getElementById('shiftInfoBtn');
-            btn.textContent = showShiftInfo ? 'Hide Shift Info' : 'Show Shift Info';
+            btn.textContent = showShiftInfo ? 'Hide Shift Info ℹ️' : 'Show Shift Info ℹ️';
             renderSchedule();
         }}
         
