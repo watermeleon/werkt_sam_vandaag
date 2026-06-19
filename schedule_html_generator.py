@@ -363,6 +363,38 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
             color: #50e070;
         }}
 
+        .footer-row {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 4px 15px 12px;
+        }}
+        .upload-link {{
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 11px;
+            border: 1px solid #3a4556;
+            border-radius: 4px;
+            background: transparent;
+            color: #7888a0;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }}
+        .upload-link:hover {{
+            color: #00ff41;
+            border-color: #00ff41;
+        }}
+        .upload-link:active {{ transform: scale(0.97); }}
+        .upload-link .icon {{ font-size: 13px; line-height: 1; opacity: 0.85; }}
+
         /* ===== Theme Toggle Button ===== */
         .theme-toggle {{
             position: absolute;
@@ -525,6 +557,8 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         .theme-light .easter-egg:hover {{
             color: #999;
         }}
+        .theme-light .upload-link {{ color: #888; border-color: #ccc; }}
+        .theme-light .upload-link:hover {{ color: #2a9d4a; border-color: #2a9d4a; }}
 
         /* ===== Animations & Misc ===== */
         .glitter-particle {{
@@ -598,7 +632,10 @@ def generate_html_content(schedule_data: List[Dict], start_date: str = None) -> 
         <div class="locations-container" id="scheduleContainer">
             <!-- Schedule will be populated by JavaScript -->
         </div>
-        <div class="easter-egg" onclick="triggerGlitterBomb()">secret to happiness</div>
+        <div class="footer-row">
+            <div class="easter-egg" onclick="triggerGlitterBomb()">secret to happiness</div>
+            <a class="upload-link" href="https://raspberrypi.tail6c9a7c.ts.net?site=sam" target="_blank" rel="noopener"><span class="icon">📤</span> upload pdf</a>
+        </div>
     </div>
 
     <script>
